@@ -56,7 +56,6 @@ int main()
                 {
                     Solutie[0][i][Adancime[0][i]++]=Productii[j].Stanga;
                     bol=1;
-                    //cout<<Productii[j].Dreapta[l].x<<" "<<Cuvant[i]<<'\n';
                 }
             }
             if(bol)
@@ -71,7 +70,6 @@ int main()
         {
             for(int k=0;k<i;k++)//index pt CYK
             {
-                //Solutie[k][j][adancime1] si Solutie[i-k-1][j+k+1][adancime2]
                 int adancime1=Adancime[k][j],adancime2=Adancime[i-k-1][j+k+1];
                 for(int o=0;o<adancime1;o++)//adancime1
                 {
@@ -81,46 +79,24 @@ int main()
                         {
                             for(l=0;l<Productii[m].NrDreapta;l++)//fiecare pereche de neterminali
                             {
-                                //cout<<Productii[m].Dreapta[l].x<<Productii[m].Dreapta[l].y<<"si"<<Solutie[k][j][o]<<Solutie[i-k-1][j+k+1][p]<<" ";
                                 if(Productii[m].Dreapta[l].x==Solutie[k][j][o] && Productii[m].Dreapta[l].y==Solutie[i-k-1][j+k+1][p])
                                 {
-                                    //cout<<Productii[m].Dreapta[l].x<<Productii[m].Dreapta[l].y<<"si"<<Solutie[k][j][o]<<Solutie[i-k-1][j+k+1][p]<<" ";
                                     int bol=1;
                                     for(int h=0;h<Adancime[i][j];h++)
                                         if(Solutie[i][j][h]==Productii[m].Stanga)
                                             bol=0;
                                     if(bol)
                                         Solutie[i][j][Adancime[i][j]++]=Productii[m].Stanga;
-                                    //cout<<Productii[m].Stanga<<" ";
                                 }
                             }
                         }
                     }
                 }
-                /*
-                for(int m=0;j<NrProductii;j++)
-                {
-                    int bol=0;
-                    for(l=0;l<Productii[m].NrDreapta;l++)
-                    {
-                        if(Productii[m].Dreapta[l].x==Cuvant[i])
-                        {
-                            Solutie[0][i][Adancime[0][i]++]=Productii[j].Stanga;
-                            bol=1;
-                        }
-                    }
-                    if(bol)
-                        continue;
-                }
-                */
             }
         }
-        //cout<<'\n';
         n--;
     }
-    //afisare solutie;
     n=naux;
-    //cout<<'\n'<<'\n';
     for(i=0;i<naux;i++)
     {
         for(j=0;j<n;j++)
@@ -149,15 +125,5 @@ int main()
     {
         cout<<"Cuvantul e acceptat";
     }
-    /*
-    //afisare productii
-    for(i=0;i<NrProductii;i++)
-    {
-        cout<<Productii[i].Stanga<<" "<<Productii[i].NrDreapta<<" ";
-        for(j=0;j<Productii[i].NrDreapta;j++)
-            cout<<Productii[i].Dreapta[j].x<<Productii[i].Dreapta[j].y<<" ";
-        cout<<'\n';
-    }
-    */
     f.close();
 }
