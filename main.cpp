@@ -121,15 +121,33 @@ int main()
     //afisare solutie;
     n=naux;
     //cout<<'\n'<<'\n';
-    for(i=0;i<n;i++)
+    for(i=0;i<naux;i++)
     {
         for(j=0;j<n;j++)
         {
-            for(l=0;l<Adancime[i][j];l++)
-                cout<<Solutie[i][j][l];
-            cout<<" ";
+            if(Adancime[i][j])
+            {
+                for(l=0;l<Adancime[i][j];l++)
+                    cout<<Solutie[i][j][l];
+                cout<<" ";
+            }
+            else
+                cout<<char(237)<<" ";
         }
+        n--;
         cout<<'\n';
+    }
+    n=naux;
+    try
+    {
+        for(i=0;i<Adancime[n-1][0];i++)
+            if(Solutie[n-1][0][i]=='S')
+                throw 1;
+        cout<<"Cuvantul nu e acceptat";
+    }
+    catch(...)
+    {
+        cout<<"Cuvantul e acceptat";
     }
     /*
     //afisare productii
